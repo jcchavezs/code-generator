@@ -44,6 +44,9 @@ func (ca *CustomArgs) AddFlags(fs *pflag.FlagSet) {
 func Validate(genericArgs *args.GeneratorArgs) error {
 	_ = genericArgs.CustomArgs.(*statusgenerators.CustomArgs)
 
+	if len(genericArgs.GoHeaderFilePath) == 0 {
+		return fmt.Errorf("go header file path cannot be empty")
+	}
 	if len(genericArgs.OutputFileBaseName) == 0 {
 		return fmt.Errorf("output file base name cannot be empty")
 	}

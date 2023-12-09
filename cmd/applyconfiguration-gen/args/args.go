@@ -74,6 +74,9 @@ func (ca *CustomArgs) AddFlags(fs *pflag.FlagSet, inputBase string) {
 
 // Validate checks the given arguments.
 func Validate(genericArgs *args.GeneratorArgs) error {
+	if len(genericArgs.GoHeaderFilePath) == 0 {
+		return fmt.Errorf("go header file path cannot be empty")
+	}
 	if len(genericArgs.OutputPackagePath) == 0 {
 		return fmt.Errorf("output package cannot be empty")
 	}

@@ -99,6 +99,9 @@ func (ca *CustomArgs) AddFlags(fs *pflag.FlagSet, inputBase string) {
 func Validate(genericArgs *args.GeneratorArgs) error {
 	customArgs := genericArgs.CustomArgs.(*CustomArgs)
 
+	if len(genericArgs.GoHeaderFilePath) == 0 {
+		return fmt.Errorf("go header file path cannot be empty")
+	}
 	if len(genericArgs.OutputPackagePath) == 0 {
 		return fmt.Errorf("output package cannot be empty")
 	}

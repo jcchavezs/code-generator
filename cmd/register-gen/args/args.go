@@ -31,6 +31,9 @@ func NewDefaults() *args.GeneratorArgs {
 
 // Validate checks the given arguments.
 func Validate(genericArgs *args.GeneratorArgs) error {
+	if len(genericArgs.GoHeaderFilePath) == 0 {
+		return fmt.Errorf("go header file path cannot be empty")
+	}
 	if len(genericArgs.OutputFileBaseName) == 0 {
 		return fmt.Errorf("output file base name cannot be empty")
 	}
